@@ -1,0 +1,8 @@
+<h1>Edit <%= @interest.name %></h1>
+
+<%= render "form" %>
+
+<section class="admin">
+    <%= button_to "Delete", interest_path(@interest), class: "button", 
+        method: :delete %>
+</section>

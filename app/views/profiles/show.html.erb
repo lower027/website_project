@@ -1,0 +1,46 @@
+<section class="profile-details">
+    <div class= "card border-0" >
+        <div class="container">
+            <div class="row no-gutters" style="border: 1em;">
+                <div class="col-4" style="border-radius: 1em; min-width: 200px;">
+                    <div class="card border-0" style= "width: 310px; margin: 10px; height: 750px; overflow: auto;">
+                        
+                        <% if @user.profile&.avatar.url %>
+                            <%= image_tag @user.profile&.avatar.url, class: "card-img-top border" %>
+                        <% else %>
+                            <%= image_tag "default_profile.jpg", class: "card-img-top border" %>
+                        <% end %>
+
+                        <div class="card-body">
+                            <h5 class="card-title text-center"><%= "#{@user.first_name} #{@user.last_name}" %></h5>  
+                            <h6 class="card-subtitle mb-2 text-muted text-center"><%= "@#{@user.username}" %></h6>
+                        
+                            <ul class="list-group list-group-flush">
+                                <% if correct_user?(@user) %>
+                                    <li class="list-group-item">
+                                        <%= link_to "Edit Profile", edit_user_profile_path(@user, @profile)  %>
+                                    </li>
+                                <% end %>
+
+                                <li class="list-group-item"><%= @user.profile&.location %></li>
+                                <li class="list-group-item"><%= @user.profile&.employment %></li>
+                                <li class="list-group-item">
+                                    <% @user.profile.interests.each do |interest| %>
+                                        <div class="interest-container border shadow">
+                                            <span class="interest"><%= interest.name %></span>
+                                        </div>
+                                    <% end %>
+                                </li>
+                            </ul>
+
+                            <p class="card-text">
+                                <%= @user.profile.mini_bio %>
+                            </p>
+
+                        </div>   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

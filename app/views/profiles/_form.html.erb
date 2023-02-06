@@ -1,0 +1,31 @@
+<%= form_with(url: user_profile_path(@user, @profile), model: [@user, @profile]) do |f| %>
+
+    <%= render "shared/errors", object: @profile %>
+
+    <%= f.label :mini_bio %>
+    <%= f.text_area :mini_bio, rows: 10, autofocus: true %>
+
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+
+    <%= f.label :employment %>
+    <%= f.text_field :employment %>
+
+    <%= f.label :interests %>
+    <div class="checkboxes">
+        <%= f.collection_check_boxes(:interest_ids, Interest.all, :id, :name) %>
+    <div>
+
+    <div>
+        <%= f.label :avatar, style: "display: block" %>
+        <% if f.object.avatar.attached? %>
+            <%= f.file_field :avatar %>
+            <p>Uploading a new avatar will replace the current one:</p>
+        <% else %>
+            <%= f.file_field :avatar %>
+        <% end %>
+    </div>
+
+
+    <%= f.submit %>
+<% end %>

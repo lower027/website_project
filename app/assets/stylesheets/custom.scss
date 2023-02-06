@@ -1,0 +1,469 @@
+// Colors
+
+$black: #393939;
+$off-white: #ededed;
+$dark-gray: #666;
+$medium-gray: #6c757d;
+$light-gray: #c2c2c2;
+$blue: #237cbe;
+$light-blue: lighten($blue, 40%);
+$orange: #e8890c;
+$yellow: #ffc107;
+$light-yellow: #ffc;
+$red: #dc3545;
+$green: #36BF78;
+$light-green: #90E0B6;
+
+// Custom Variables
+
+$secondary-text-color: $medium-gray;
+$accent-color: $orange;
+$secondary-link-color: $green;
+$border-color: $light-gray;
+$error-color: $red;
+$error-background-color: $light-yellow;
+$sold-out-color: $yellow;
+$box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.09);
+
+// Bootstrap Variable Overrides
+
+$body-color: $black;
+$body-bg: white;
+$primary: $green;
+$secondary: $medium-gray;
+$min-contrast-ratio: 4;
+$input-bg: white;
+
+// Import Bootstrap Styles
+
+@import "bootstrap";
+
+// Custom CSS
+
+.content {
+  @extend .container;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+p {
+  font-size: 14px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: black
+}
+
+// Header and Nav
+
+header {
+  background-color: white;
+  padding: 0.5rem;
+  margin-bottom: 3rem;
+
+  nav {
+    @extend .navbar, .navbar-expand-md;
+
+
+    img {
+      height: 50px;
+      margin-right: 0.5rem;
+    }
+
+    a {
+      color: $secondary-link-color;
+    }
+
+    a.button {
+      @extend .btn, .btn-outline-secondary;
+    }
+
+    ul {
+      @extend .nav, .navbar-nav;
+      letter-spacing: 1px;
+
+      &.left {
+        @extend .me-auto;
+      }
+
+      &.right {
+        @extend .ms-auto;
+      }
+
+      li {
+        @extend .nav-item;
+        font-size: 1.1rem;
+        margin-right: 5px;
+
+        a {
+          @extend .nav-link;
+          color: $secondary-link-color;
+          padding-bottom: 1px;
+        }
+
+        a:hover:not(.button),
+        a.active {
+          color: $off-white;
+          text-decoration: none;
+          border-bottom: 1px solid $off-white;
+        }
+
+        .button,
+        button {
+          margin-right: 10px;
+          color: $secondary-link-color;
+          border-color: $off-white;
+        }
+
+        .button:hover,
+        button:hover {
+          background: $off-white;
+          color: $primary;
+          border-color: $primary;
+        }
+
+        button {
+          @extend .btn, .btn-outline-secondary;
+        }
+      }
+    }
+  }
+}
+
+// User Index Page
+
+section.users {
+  @extend .row;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1em;
+  border-bottom: 1px dotted $border-color;
+
+  &:nth-last-child(1) {
+    border-bottom: none;
+  }
+
+  ul.users {
+    font-size: 1.25em;
+    list-style: none;
+    padding: 0;
+  
+    li {
+      margin: 1em 0;
+    }
+  }
+
+  .image {
+    @extend .col-md-3, .text-center;
+    img {
+      width: 100px;
+      box-shadow: $box-shadow;
+    }
+  }
+
+  .summary {
+    @extend .col-md-9, .text-start;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    color: $secondary-text-color;
+    font-weight: 400;
+  }
+
+  p {
+    margin-top: 1.1rem;
+  }
+
+  span.stars {
+    float: right;
+    margin-top: -3.75rem;
+  }
+}
+
+// Profile Show Page
+
+section.profile-details {
+  @extend .row;
+
+  .card {
+    border-radius: 1em;
+    float: left;
+    display: flex;
+    justify-content: flex-start;
+    height: auto;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    
+  }
+
+  .card-img-top {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    margin-top: 1em;
+    border-radius: 50%;
+
+  }
+
+  .interest-container {
+    background-color: white;
+    border-radius: 1em;
+    padding: 0.5em 1em;
+    display: inline-block;
+    border-color: #666;
+    width: auto;
+    font-size: small;
+    margin-bottom: 5px;
+  }
+
+  .details {
+    @extend .col-md-7, .text-start;
+  }
+
+  aside {
+    @extend .col-md-2;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+    color: $secondary-text-color;
+  }
+
+  h3 {
+    margin-top: 1.5rem;
+    font-size: 1.25rem;
+    color: $secondary-text-color;
+    font-weight: 300;
+  }
+
+  table {
+    td {
+      padding-top: 0.35rem;
+      padding-bottom: 0.35rem;
+    }
+    th {
+      padding-right: 1rem;
+    }
+  }
+
+  .faves {
+    @extend .input-group;
+    margin-top: 1rem;
+
+    .count {
+      @extend .input-group-text;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    button[type="submit"] {
+      @extend .btn, .btn-outline-secondary;
+      border-color: #cdd3d8;
+      border-right: none;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      margin-top: 0;
+    }
+  }
+
+}
+
+
+// Footer
+
+footer {
+  background: $black;
+  color: $light-gray;
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+// Admin Section
+
+section.admin {
+  text-align: center;
+  margin: 3rem 0;
+  padding-top: 2rem;
+  border-top: 1px dashed $border-color;
+
+  &.no-rule {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  a.button, button {
+    @extend .btn, .btn-secondary;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+}
+
+section.interest + section.admin {
+  border-top: none;
+  padding-top: 0;
+}
+
+// Aside
+
+aside {
+  h4 {
+    color: $secondary-text-color;
+    font-size: 1rem;
+    margin-top: 1rem;
+    padding-bottom: 0.3rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid $border-color;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0.25rem;
+
+    li {
+      padding-bottom: 0.5rem;
+    }
+  }
+}
+
+// Forms
+
+form.button_to {
+  display: inline;
+}
+
+form:not([class="button_to"]) {
+  max-width: 503px;
+  margin-top: 1.5rem;
+
+  label {
+    @extend .form-label;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: block;
+  }
+
+  input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="submit"]),
+  textarea,
+  select:not(.date) {
+    @extend .form-control;
+    margin-bottom: 0.75rem;
+    width: 100%;
+    height: 100%;
+  }
+
+  select.date {
+    @extend .form-select;
+    width: auto;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+  }
+
+  input[type="submit"] {
+    @extend .btn, .btn-primary;
+    display: block;
+    width: 100%;
+    margin-top: 1.5rem;
+  }
+
+  input[type="checkbox"] {
+    @extend .form-check-input;
+    width: 20px;
+    height: 20px;
+  }
+
+  input[type="checkbox"] + label {
+    @extend .form-check-label;
+    padding-left: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  input[type="radio"] {
+    @extend .form-check-input;
+    width: 20px;
+    height: 20px;
+  }
+
+  input[type="radio"] + label {
+    @extend .form-check-label;
+    margin-bottom: 0.6rem;
+    font-weight: 400;
+  }
+
+  input[type="file"] {
+    margin-bottom: 0.75rem;
+    width: 100%;
+  }
+
+  .star {
+    @extend .form-check, .form-check-inline;
+  }
+
+  .checkboxes {
+    @extend .form-check;
+    margin-top: 1.5rem;
+  }
+
+  div.field_with_errors {
+    display: inline;
+    label {
+      color: $error-color;
+    }
+    input,
+    textarea,
+    select {
+      background: $error-background-color !important;
+    }
+  }
+}
+
+// Flashes
+
+.flash {
+  @extend .alert;
+  text-align: center;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+
+  &.notice {
+    @extend .alert-success;
+  }
+
+  &.alert {
+    @extend .alert-danger;
+  }
+}
+
+// Errors
+
+section.errors {
+  margin: 1rem 0;
+  padding: 1.5rem;
+  border-radius: 0.3rem;
+  background: $error-background-color;
+
+  h2 {
+    color: $error-color;
+    font-size: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+    margin-top: 1rem;
+    font-weight: 600;
+  }
+}
+

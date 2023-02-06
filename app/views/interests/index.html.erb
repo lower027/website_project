@@ -1,0 +1,21 @@
+
+
+    <h1>List of Interests</h1>
+
+    <%= link_to "Create Interest", new_interest_path, class: "button" %>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Interest Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @interests.each do |interest| %>
+                <tr>
+                    <td><%= interest.name %></td>
+                    <td><%= link_to "Edit", edit_interest_path(interest), class: "button" %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>

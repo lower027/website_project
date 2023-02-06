@@ -1,0 +1,27 @@
+<h1> Browse Users </h1>
+
+<section class="users">
+    <ul class="users">
+        <% @users.each do |user| %>
+            <% if user.profile != nil %>
+            <div class="container border">
+                <div class="user-row">
+                    <li>
+                        <h5><%= link_to "#{user.first_name} #{user.last_name}", user_profile_path(user, user.profile) %></h5>
+                    </li>
+                    <li>
+                        <h6 class="muted-text">
+                            <%= "#{user.profile.employment}" %> &bull; <%= "#{user.profile.location}" %>
+                        </h6>
+                    </li>
+                    <li> 
+                        <p>
+                            <%= truncate(user.profile.mini_bio, length: 200) %>
+                        </p>
+                    </li>
+                </div>
+            </div>
+            <% end %>
+        <% end %>
+    </ul>
+</section>
