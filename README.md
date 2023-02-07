@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+Make sure to make a user an admin through the rails console database! This way, you can test the interest MVC!
